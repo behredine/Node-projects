@@ -3,8 +3,8 @@ import { appendFileSync } from "fs";
 import { createInterface } from "readline";
 
 const readline = createInterface({
-  input: stdin.process,
-  output: stdout.process,
+  input: process.stdin,
+  output: process.stdout,
 });
 
 class Person {
@@ -15,7 +15,7 @@ class Person {
   }
 
   saveToCSV() {
-    const content = `${this.name} ,${this.number} , ${this.email}`;
+    const content = `${this.name} ,${this.number} , ${this.email} \n`;
     try {
       appendFileSync("./contact.csv", content);
       console.log(`${this.name} is saved`);
