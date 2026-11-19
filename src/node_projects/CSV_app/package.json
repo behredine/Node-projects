@@ -1,0 +1,11 @@
+{
+  "name": "CSV_app",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "script": {
+    "test": "echo \"Erorr: no test specified \" && exit 1"
+  },
+  "author": "Behredin Eshetu",
+  "license": "AAU"
+}
