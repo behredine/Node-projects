@@ -1,0 +1,19 @@
+{
+  "name": "fare-is-fair",
+  "version": "1.0.0",
+  "description": "\"from the book node projects \"",
+  "license": "ISC",
+  "author": "Behredin",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@fastify/static": "^10.1.12",
+    "@fastify/view": "^12.0.1",
+    "ejs": "^7.0.2",
+    "es": "^0.8.0",
+    "fastify": "^5.12.8"
+  }
+}

@@ -1,0 +1,597 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+/* ==========================================================================
+   CSS CUSTOM PROPERTIES / THEME VARIABLES
+   ========================================================================== */
+:root {
+  --bg-main: #141010;
+  --bg-card: rgba(255, 255, 255, 0.04);
+  --bg-card-hover: rgba(255, 255, 255, 0.07);
+  --border-card: rgba(255, 255, 255, 0.09);
+  --border-card-hover: rgba(229, 169, 60, 0.35);
+
+  --accent-gold: #e5a93c;
+  --accent-gold-light: #f3c26b;
+  --accent-gold-glow: rgba(229, 169, 60, 0.18);
+  --accent-terracotta: #d96b43;
+
+  --text-primary: #fcf9f2;
+  --text-secondary: #b8aea2;
+  --text-muted: #82786f;
+
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 8px 32px rgba(229, 169, 60, 0.2);
+
+  --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   RESET & BASE STYLES
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-main);
+  background-image: 
+    radial-gradient(ellipse at 15% 0%, rgba(217, 107, 67, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 100%, rgba(229, 169, 60, 0.08) 0%, transparent 50%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  line-height: 1.65;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ==========================================================================
+   GLOBAL NAVIGATION BAR
+   ========================================================================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(20, 16, 16, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-card);
+  padding: 0.85rem 1.5rem;
+  transition: var(--transition);
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-brand:hover {
+  color: var(--accent-gold-light);
+  transform: translateY(-1px);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nav-link {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  transition: var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.nav-link.active {
+  color: #141010;
+  background: var(--accent-gold);
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(229, 169, 60, 0.35);
+}
+
+/* ==========================================================================
+   LAYOUT CONTAINERS & HEADINGS
+   ========================================================================== */
+.container {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+/* Elegant subtitle under main headers */
+.subtitle,
+.page-header p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+/* ==========================================================================
+   HOME PAGE (HERO SECTION)
+   ========================================================================== */
+.home-hero {
+  position: relative;
+  min-height: calc(90vh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 4rem 2rem;
+  border-radius: var(--radius-lg);
+  margin-top: 1.5rem;
+  margin-bottom: 2.5rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-card);
+
+  /* Food background image with rich atmospheric gradients */
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(20, 16, 16, 0.96) 0%,
+      rgba(20, 16, 16, 0.88) 45%,
+      rgba(20, 16, 16, 0.55) 75%,
+      rgba(20, 16, 16, 0.35) 100%
+    ),
+    url(../image.png);
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+}
+
+.home-content {
+  position: relative;
+  z-index: 2;
+  max-width: 580px;
+  text-align: left;
+}
+
+.home-hero .badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(229, 169, 60, 0.12);
+  color: var(--accent-gold);
+  border: 1px solid rgba(229, 169, 60, 0.3);
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.home-content h1 {
+  font-size: clamp(2.4rem, 5vw, 3.75rem);
+  color: #ffffff;
+  margin-bottom: 1.2rem;
+  line-height: 1.15;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
+}
+
+.home-content p {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Action Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+}
+
+.btn-primary {
+  background: var(--accent-gold);
+  color: #141010;
+  box-shadow: 0 4px 15px rgba(229, 169, 60, 0.3);
+}
+
+.btn-primary:hover {
+  background: var(--accent-gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(229, 169, 60, 0.45);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--text-primary);
+  border: 1px solid var(--border-card);
+  backdrop-filter: blur(8px);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Feature cards underneath */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+.feature-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  transition: var(--transition);
+}
+
+.feature-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-card-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+}
+
+.feature-icon {
+  font-size: 1.75rem;
+  margin-bottom: 0.85rem;
+  display: inline-block;
+}
+
+.feature-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.feature-text {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   MENU PAGE (CARD GRID & GOURMET STYLING)
+   ========================================================================== */
+ol {
+  list-style: none;
+  counter-reset: menu-counter;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  padding: 0;
+  margin-top: 1.5rem;
+}
+
+ol li {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+}
+
+/* Subtle accent glow at top edge of menu card */
+ol li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-terracotta), var(--accent-gold));
+  opacity: 0.5;
+  transition: var(--transition);
+}
+
+ol li:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-card-hover);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glow);
+}
+
+ol li:hover::before {
+  opacity: 1;
+}
+
+/* Dish Title */
+ol li strong {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: capitalize;
+  display: block;
+  margin-bottom: 0.65rem;
+  letter-spacing: -0.01em;
+}
+
+/* Hide raw colon punctuation (span 1: ':-' and span 3: ':') cleanly in CSS */
+ol li > span:nth-of-type(1),
+ol li > span:nth-of-type(3) {
+  display: none !important;
+}
+
+/* Dish Description (span 2) */
+ol li > span:nth-of-type(2) {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+/* Dish Price Tag (span 4) */
+ol li > span:nth-of-type(4) {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  background: rgba(229, 169, 60, 0.12);
+  color: var(--accent-gold);
+  border: 1px solid rgba(229, 169, 60, 0.28);
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-family: var(--font-sans);
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: var(--transition);
+}
+
+ol li:hover > span:nth-of-type(4) {
+  background: var(--accent-gold);
+  color: #141010;
+  border-color: var(--accent-gold);
+}
+
+/* ==========================================================================
+   OPERATING HOURS PAGE
+   ========================================================================== */
+/* Container layout for hours */
+.hours-page,
+body > .container:has(h1:contains('Hours')),
+body:has(title:contains('hours')) .container {
+  display: block;
+}
+
+/* The parent layout holding the day sections */
+.hours-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+/* Section styling (overriding inline styles seamlessly) */
+section[style*="inline-flex"],
+.hours-page section,
+.hours-card {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between;
+  padding: 1.5rem !important;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+  backdrop-filter: blur(8px);
+  position: relative;
+  overflow: hidden;
+}
+
+section[style*="inline-flex"]:hover,
+.hours-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-card-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Day Heading */
+section[style*="inline-flex"] h2,
+.hours-card h2 {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Hours info container */
+section[style*="inline-flex"] div,
+.hours-card div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* Individual time paragraphs */
+section[style*="inline-flex"] p,
+.hours-card p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+section[style*="inline-flex"] p strong,
+.hours-card p strong {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-family: var(--font-sans);
+}
+
+/* Open status */
+section[style*="inline-flex"] p:first-child:not(:only-child),
+.hours-card p:first-child:not(:only-child) {
+  color: var(--text-secondary);
+}
+
+/* Closed status when closed all day */
+section[style*="inline-flex"] p:only-child {
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.22);
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-align: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.site-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--border-card);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  background: rgba(18, 14, 14, 0.6);
+}
+
+.site-footer a {
+  color: var(--accent-gold);
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .home-hero {
+    min-height: auto;
+    padding: 3rem 1.5rem;
+    margin-top: 1rem;
+    background-position: center;
+  }
+
+  .home-content h1 {
+    font-size: 2.2rem;
+  }
+
+  ol {
+    grid-template-columns: 1fr;
+  }
+
+  .hours-container {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}

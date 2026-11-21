@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/public/stylesheets/style.css" />
+    <title>Menu | Fare is Fair</title>
+  </head>
+  <body>
+    <!-- Top Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="/" class="nav-brand">🍽️ Fare is Fair</a>
+        <div class="nav-links">
+          <a href="/" class="nav-link">Home</a>
+          <a href="/menu" class="nav-link active">Menu</a>
+          <a href="/hours" class="nav-link">Hours</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="container">
+      <div class="page-header">
+        <h1>Menu Items</h1>
+        <p class="subtitle">Carefully crafted seasonal dishes prepared with organic ingredients and creative flair.</p>
+      </div>
+
+      <ol>
+        <% for (let item of menuItems) {%>
+          <li>
+            <strong><%= item.name %> </strong>
+            <span>:-</span>
+            <span><%= item.description %></span>
+            <span>:</span>
+            <span>$<%= item.cost %></span>
+          </li>
+        <% }%>
+      </ol>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <p>&copy; 2026 Fare is Fair Restaurant. Powered by Node.js &amp; Fastify.</p>
+    </footer>
+  </body>
+</html>

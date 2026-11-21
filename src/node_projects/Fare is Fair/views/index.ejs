@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/public/stylesheets/style.css" />
+    <title>Fare is Fair | Restaurant</title>
+  </head>
+  <body>
+    <!-- Top Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="/" class="nav-brand">🍽️ Fare is Fair</a>
+        <div class="nav-links">
+          <a href="/" class="nav-link active">Home</a>
+          <a href="/menu" class="nav-link">Menu</a>
+          <a href="/hours" class="nav-link">Hours</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="container">
+      <!-- Hero Section -->
+      <section class="home-hero">
+        <div class="home-content">
+          <div class="badge">Artisan Kitchen & Local Flavors</div>
+          <h1>Welcome to <%= name %></h1>
+          <p>This is a simple restaurant website crafted with fresh local ingredients, artisanal recipes, and a passion for wholesome dining.</p>
+          <div class="hero-actions">
+            <a href="/menu" class="btn btn-primary">Explore Our Menu</a>
+            <a href="/hours" class="btn btn-secondary">Operating Hours</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Highlights Section -->
+      <section class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🥦</div>
+          <h2 class="feature-title">Fresh Ingredients</h2>
+          <p class="feature-text">Locally sourced produce and high quality staples prepared daily in our artisan kitchen.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">✨</div>
+          <h2 class="feature-title">Unique Recipes</h2>
+          <p class="feature-text">From our famous broccoli pie to refreshing watermelon sushi, enjoy imaginative dishes.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🕐</div>
+          <h2 class="feature-title">Open 6 Days a Week</h2>
+          <p class="feature-text">Serving lunch and dinner Tuesday through Sunday. Check our hours for full details.</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <p>&copy; 2026 Fare is Fair Restaurant. Powered by Node.js &amp; Fastify.</p>
+    </footer>
+  </body>
+</html>
